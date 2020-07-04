@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sale{% endblock %}
+
+{% block body %}
+    <h1>Sale</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ sale.id }}</td>
+        </tr>
+        <tr>
+            <th>Sale_date</th>
+            <td>{{ sale.saleDate ? sale.saleDate|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Dep_number</th>
+            <td>{{ sale.depNumber }}</td>
+        </tr>
+        <tr>
+            <th>Prod_code</th>
+            <td>{{ sale.prodCode }}</td>
+        </tr>
+        <tr>
+            <th>Amount</th>
+            <td>{{ sale.amount }}</td>
+        </tr>
+
+        </tbody>
+
+    </table>
+    <table>
+        {% for category in sale.category %}
+            <tr>
+                <td>{{ category.prod_id }}</td>
+                <td>{{ category.name }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    <a href = "{{ url('sale_show', {prod_code: category.prod_code}) }}"></a>
+{% endblock %}
+
